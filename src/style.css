@@ -43,6 +43,7 @@ h1 {
 
 i {
   color: #C1C1C1;
+  cursor: pointer;
 }
 
 /* Form and Input : List of task */
@@ -92,6 +93,7 @@ input:focus {
   height: 60px;
   font-weight: 500;
   color: rgb(153, 152, 152);
+  cursor: pointer;
   background-color: #F6F6F6;
   border-top: 1px solid rgba(193,193,193,0.4);
   border-bottom: none;
