@@ -9,7 +9,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
   font-family: "Inter var", sans-serif;
 }
 
@@ -20,7 +20,7 @@ main {
   min-height: 220px;
   margin: 8px;
   border-radius: 4px;
-  box-shadow: 0 6px 8px rgba(0,0,0,0.2) ;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -42,7 +42,7 @@ h1 {
 }
 
 i {
-  color: #C1C1C1;
+  color: #c1c1c1;
   cursor: pointer;
 }
 
@@ -52,7 +52,7 @@ i {
   border: none;
   padding: 16px;
   font-size: 1.125rem;
-  border-top: 1px solid rgba(193,193,193,0.4);
+  border-top: 1px solid rgba(193, 193, 193, 0.4);
 }
 
 .addtask:focus {
@@ -70,7 +70,7 @@ i {
   justify-content: space-between;
   align-content: center;
   padding: 16px;
-  border-top: 1px solid rgba(193,193,193,0.4);
+  border-top: 1px solid rgba(193, 193, 193, 0.4);
   background-color: white;
 }
 
@@ -85,12 +85,14 @@ i {
   height: 15px;
   margin-right: 12px;
 }
+
 .task .task-content .task-description {
   width: 100%;
   border: none;
   font-size: 1.125rem;
   background: none;
 }
+
 .task .task-content .task-description:focus {
   outline: none;
 }
@@ -101,8 +103,8 @@ i {
   font-weight: 500;
   color: rgb(153, 152, 152);
   cursor: pointer;
-  background-color: #F6F6F6;
-  border-top: 1px solid rgba(193,193,193,0.4);
+  background-color: #f6f6f6;
+  border-top: 1px solid rgba(193, 193, 193, 0.4);
   border-bottom: none;
   border-left: none;
   border-right: none;
