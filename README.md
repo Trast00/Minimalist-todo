@@ -32,7 +32,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-[Live Demo Link](https://trast00.github.io/Minimalist-todo/)
+[Live Demo Link](https://trast00.github.io/Minimalist-todo/dist/index.html)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
