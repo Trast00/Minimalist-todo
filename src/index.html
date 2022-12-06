@@ -4,9 +4,29 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+  <script src="https://kit.fontawesome.com/a1c06e2fcd.js" crossorigin="anonymous"></script>
+  <title>Minismalist To Do List</title>
 </head>
 <body>
-  
+  <main>
+    <div class="title">
+      <h1>Today's To Do</h1>
+      <i class="fa-solid fa-repeat"></i>
+    </div>
+    <form>
+      <label for="newtask">
+        <input type="text" placeholder="Add to your list..." name="newtask" id="newtask">
+      </label>
+    </form>
+    <ul>
+      <li>
+        <input type="checkbox" name="taskId" id="taskId">
+        <label for="taskId">Task Name</label>
+        <i class="fa-solid fa-ellipsis-vertical"></i>
+      </li>
+    </ul>
+    <button>Clear all completed</button>
+  </main>
 </body>
 </html>

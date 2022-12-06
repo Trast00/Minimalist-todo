@@ -1,0 +1,57 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #F6F6F6;
+  font-family: "Inter var", sans-serif;
+}
+
+main {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 500px;
+  min-height: 250px;
+  margin: 8px;
+  border-radius: 4px;
+  box-shadow: 0 6px 8px rgba(0,0,0,0.2) ;
+  background-color: white;
+}
+
+/* Title */
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+}
+
+h1 {
+  font-weight: 500;
+  font-size: 1.3rem;
+}
+
+i {
+  color: #C1C1C1;
+}
+
+/* Form and Input : List of task */
+input {
+  width: 100%;
+  border: none;
+  padding: 16px;
+  font-size: 1.125rem;
+}
+
+input:focus {
+  outline: none;
+}
+
+
