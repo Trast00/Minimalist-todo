@@ -19,14 +19,17 @@
         <input type="text" placeholder="Add to your list..." name="newtask" id="newtask">
       </label>
     </form>
-    <ul>
-      <li>
-        <input type="checkbox" name="taskId" id="taskId">
-        <label for="taskId">Task Name</label>
+    <ul id="list-task">
+      <li class="task">
+        <div class="task-content">
+          <input type="checkbox" name="taskId" id="taskId">
+          <label for="taskId">Task Name</label>
+        </div>
         <i class="fa-solid fa-ellipsis-vertical"></i>
       </li>
+      
     </ul>
-    <button>Clear all completed</button>
+    <button id="btn-clear-task">Clear all completed</button>
   </main>
 </body>
 </html>
