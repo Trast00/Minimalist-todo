@@ -11,23 +11,39 @@ export default class ListTasks {
     this.display(task)
   }
 
-  /* Generate task dynamicaly */
+  /* Generate / Update task dynamicaly */
   display = (task) => {
+    let currentID = task.order
+
     const ulListTask = document.getElementById('list-task')
     const liTask = document.createElement('li')
     liTask.classList.add('task')
+    liTask.id = currentID
 
     const divTaskContent = document.createElement('div')
     divTaskContent.classList.add('task-content')
     const checkBok = document.createElement('input')
     checkBok.type = "checkbox"
-    checkBok.name = task.order
-    checkBok.id = task.order
-    const label = document.createElement('label')
-    label.for = task.order
-    label.textContent = task.description
+    checkBok.name = currentID
+    const inTaskDescription = document.createElement('input')
+    inTaskDescription.classList.add('task-description')
+    inTaskDescription.value = task.description
+    inTaskDescription.type = "text"
+
+    /* Update */
+    inTaskDescription.addEventListener("focus", () => {
+      document.getElementById(currentID).style.backgroundColor = "blue"
+    })
+    /* Update value when stop focus */
+    inTaskDescription.addEventListener("focusout", () => {
+      let litask = document.getElementById(currentID)
+      litask.style.backgroundColor = "white"
+      this.list[currentID].description = litask.querySelector('.task-description').value
+    })
+  
+
     divTaskContent.append(checkBok)
-    divTaskContent.append(label)
+    divTaskContent.append(inTaskDescription)
 
     const iMenu = document.createElement('i')
     iMenu.classList.add('fa-solid', 'fa-ellipsis-vertical')

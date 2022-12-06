@@ -13,3 +13,6 @@ form.addEventListener('submit', (event) => {
     form.newtask.value = ""
   }
 })
+
+/* Update Task */
+document.querySelectorAll(".task-description")

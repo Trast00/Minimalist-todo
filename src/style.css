@@ -47,7 +47,7 @@ i {
 }
 
 /* Form and Input : List of task */
-input {
+.addtask {
   width: 100%;
   border: none;
   padding: 16px;
@@ -55,7 +55,7 @@ input {
   border-top: 1px solid rgba(193,193,193,0.4);
 }
 
-input:focus {
+.addtask:focus {
   outline: none;
 }
 
@@ -71,6 +71,7 @@ input:focus {
   align-content: center;
   padding: 16px;
   border-top: 1px solid rgba(193,193,193,0.4);
+  background-color: white;
 }
 
 .task .task-content {
@@ -79,13 +80,19 @@ input:focus {
   align-items: center;
 }
 
-.task .task-content input {
+.task .task-content input[type="checkbox"] {
   width: 15px;
   height: 15px;
   margin-right: 12px;
 }
-.task .task-content label {
+.task .task-content .task-description {
   width: 100%;
+  border: none;
+  font-size: 1.125rem;
+  background: none;
+}
+.task .task-content .task-description:focus {
+  outline: none;
 }
 
 #btn-clear-task {
