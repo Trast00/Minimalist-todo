@@ -13,7 +13,7 @@ export default class ListTasks {
 
   /* Generate / Update task dynamicaly */
   display = (task) => {
-    let currentID = task.order
+    let currentID = task.index
 
     const ulListTask = document.getElementById('list-task')
     const liTask = document.createElement('li')
@@ -25,15 +25,28 @@ export default class ListTasks {
     const checkBok = document.createElement('input')
     checkBok.type = "checkbox"
     checkBok.name = currentID
+
     const inTaskDescription = document.createElement('input')
     inTaskDescription.classList.add('task-description')
     inTaskDescription.value = task.description
     inTaskDescription.type = "text"
 
     /* Update */
+    checkBok.addEventListener('change', (event) => {
+      if(event.currentTarget.checked){
+        event.currentTarget.nextSibling.style.textDecoration = "line-through"
+        this.list[currentID].completed = true
+      }
+      else {
+        event.currentTarget.nextSibling.style.textDecoration = "none"
+        this.list[currentID].completed = false
+      }
+    })
+
     inTaskDescription.addEventListener("focus", () => {
       document.getElementById(currentID).style.backgroundColor = "blue"
     })
+
     /* Update value when stop focus */
     inTaskDescription.addEventListener("focusout", () => {
       let litask = document.getElementById(currentID)
@@ -42,6 +55,7 @@ export default class ListTasks {
     })
   
 
+    /* Display element */
     divTaskContent.append(checkBok)
     divTaskContent.append(inTaskDescription)
 
@@ -56,8 +70,8 @@ export default class ListTasks {
 
 
   delete = (task) => {
-    this.list = this.list.splice(0, task.order) + this.list.splice(task.order, task.length-1)
-    //document.getElementById(task.order)
+    this.list = this.list.splice(0, task.index) + this.list.splice(task.index, task.length-1)
+    //document.getElementById(task.index)
   }
 
 }
