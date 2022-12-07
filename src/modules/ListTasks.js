@@ -43,6 +43,7 @@ export default class ListTasks {
 
     if (task.completed) {
       checkBok.click();
+      inTaskDescription.style.textDecoration = 'line-through';
     }
 
     inTaskDescription.addEventListener('focus', (event) => {
@@ -83,7 +84,7 @@ export default class ListTasks {
     iDelete.classList.add('fa-solid', 'fa-trash', 'hidden');
     iDelete.addEventListener('click', (event) => {
       const { id } = event.currentTarget.parentElement;
-      this.delete(id);
+      this.delete(id); // id = index + 1
     });
 
     liTask.append(divTaskContent);
@@ -93,9 +94,9 @@ export default class ListTasks {
     ulListTask.append(liTask);
   }
 
-  delete = (indexDeleted) => {
-    this.list = this.list.filter((task) => task.index !== this.list[indexDeleted - 1].index);
-    document.getElementById(indexDeleted).remove();
+  delete = (idDeleted) => {
+    this.list = this.list.filter((task) => task.index !== this.list[idDeleted - 1].index);
+    document.getElementById(idDeleted).remove();
     this.updateIndexs();
   }
 
@@ -108,5 +109,16 @@ export default class ListTasks {
       task.index = index;
       index += 1;
     });
+  }
+
+  clearAll = () => {
+    this.list.forEach((task) => {
+      if (task.completed) {
+        document.getElementById(task.index).remove();
+      }
+    });
+
+    this.list = this.list.filter((task) => !task.completed);
+    this.updateIndexs();
   }
 }
