@@ -1,41 +1,34 @@
 import './style.css';
-import Task from './modules/Task.js';
-// import ListTasks from "./modules/ListTasks.js"
+import ListTasks from './modules/ListTasks.js';
 
 /* List Task */
-const listTask = [new Task(1, 'Task 1', false),
-  new Task(2, 'Task 2', false),
-  new Task(3, 'Task 3', false),
-  new Task(4, 'Task 4', false),
-  new Task(5, 'Task 5', false),
-];
-/* Sort List Of task */
+const listTask = new ListTasks();
 
-/* Display List */
-listTask.forEach((task) => {
-  const ulListTask = document.getElementById('list-task');
-  const liTask = document.createElement('li');
-  liTask.classList.add('task');
+/* On submit the input */
+const form = document.forms[0];
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  if (form.newtask.value.length !== 0) {
+    listTask.add(form.newtask.value);
+    form.newtask.value = '';
+  }
+});
 
-  const divTaskContent = document.createElement('div');
-  divTaskContent.classList.add('task-content');
-  const checkBok = document.createElement('input');
-  checkBok.type = 'checkbox';
+/* Save changes in Local Storage */
+window.addEventListener('beforeunload', () => {
+  const savedData = { currentDescription: form.newtask.value, list: listTask.list };
+  window.localStorage.setItem('SavedData', JSON.stringify(savedData));
+});
 
-  const inTaskDescription = document.createElement('input');
-  inTaskDescription.classList.add('task-description');
-  inTaskDescription.value = task.description;
-  inTaskDescription.type = 'text';
+window.addEventListener('load', () => {
+  const savedData = JSON.parse(window.localStorage.getItem('SavedData'));
 
-  /* Display element */
-  divTaskContent.append(checkBok);
-  divTaskContent.append(inTaskDescription);
-
-  const iMenu = document.createElement('i');
-  iMenu.classList.add('fa-solid', 'fa-ellipsis-vertical');
-
-  liTask.append(divTaskContent);
-  liTask.append(iMenu);
-
-  ulListTask.append(liTask);
+  if (savedData.currentDescription != null) {
+    form.newtask.value = savedData.currentDescription;
+  }
+  if (savedData.list != null) {
+    savedData.list.forEach((task) => {
+      listTask.add(task.description, task.completed, task.index);
+    });
+  }
 });
