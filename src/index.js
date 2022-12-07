@@ -1,17 +1,12 @@
 import './style.css';
-import Task from './modules/Task.js';
-// import ListTasks from "./modules/ListTasks.js"
+import ListTasks from './modules/ListTasks.js';
 
 /* List Task */
-const listTask = [new Task(1, 'Task 1', false),
-  new Task(2, 'Task 2', false),
-  new Task(3, 'Task 3', false),
-  new Task(4, 'Task 4', false),
-  new Task(5, 'Task 5', false),
-];
+const listTask = new ListTasks(); // [new Task('Task 1', false)];
 /* Sort List Of task */
 
 /* Display List */
+/*
 listTask.forEach((task) => {
   const ulListTask = document.getElementById('list-task');
   const liTask = document.createElement('li');
@@ -28,7 +23,7 @@ listTask.forEach((task) => {
   inTaskDescription.type = 'text';
 
   /* Display element */
-  divTaskContent.append(checkBok);
+/* divTaskContent.append(checkBok);
   divTaskContent.append(inTaskDescription);
 
   const iMenu = document.createElement('i');
@@ -38,4 +33,34 @@ listTask.forEach((task) => {
   liTask.append(iMenu);
 
   ulListTask.append(liTask);
+});
+*/
+
+/* On submit the input */
+const form = document.forms[0];
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  if (form.newtask.value.length !== 0) {
+    listTask.add(form.newtask.value);
+    form.newtask.value = '';
+  }
+});
+
+/* Save changes in Local Storage */
+window.addEventListener('beforeunload', () => {
+  const savedData = { currentDescription: form.newtask.value, list: listTask.list };
+  window.localStorage.setItem('SavedData', JSON.stringify(savedData));
+});
+
+window.addEventListener('load', () => {
+  const savedData = JSON.parse(window.localStorage.getItem('SavedData'));
+
+  if (savedData.currentDescription != null) {
+    form.newtask.value = savedData.currentDescription;
+  }
+  if (savedData.list != null) {
+    savedData.list.forEach((task) => {
+      listTask.add(task.description);
+    });
+  }
 });
