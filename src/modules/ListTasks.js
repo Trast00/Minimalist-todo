@@ -5,8 +5,8 @@ export default class ListTasks {
     this.list = [];
   }
 
-  add = (description) => {
-    const task = new Task(description, false, this.list.length + 1);
+  add = (description, completed = false, index = this.list.length + 1) => {
+    const task = new Task(description, completed, index);
     this.list.push(task);
     this.display(task);
   }

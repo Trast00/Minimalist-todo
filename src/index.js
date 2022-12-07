@@ -60,8 +60,7 @@ window.addEventListener('load', () => {
   }
   if (savedData.list != null) {
     savedData.list.forEach((task) => {
-      listTask.list.push(task);
-      listTask.display(task);
+      listTask.add(task.description, task.completed, task.index);
     });
   }
 });
