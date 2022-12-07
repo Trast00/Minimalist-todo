@@ -13,52 +13,56 @@ export default class ListTasks {
 
   /* Generate / Update task dynamicaly */
   display = (task) => {
-    const currentID = task.index;
-
     const ulListTask = document.getElementById('list-task');
     const liTask = document.createElement('li');
     liTask.classList.add('task');
-    liTask.id = currentID;
+    liTask.id = task.index;
 
     const divTaskContent = document.createElement('div');
     divTaskContent.classList.add('task-content');
     const checkBok = document.createElement('input');
     checkBok.type = 'checkbox';
-    checkBok.name = currentID;
+    checkBok.name = task.index;
 
     const inTaskDescription = document.createElement('input');
     inTaskDescription.classList.add('task-description');
     inTaskDescription.value = task.description;
     inTaskDescription.type = 'text';
-    inTaskDescription.id = `description-${currentID}`;
 
     /* Update */
     checkBok.addEventListener('change', (event) => {
+      const { id } = event.currentTarget.parentElement.parentElement;
       if (event.currentTarget.checked) {
         event.currentTarget.nextSibling.style.textDecoration = 'line-through';
-        this.list[currentID - 1].completed = true;
+        this.list[id - 1].completed = true;
       } else {
         event.currentTarget.nextSibling.style.textDecoration = 'none';
-        this.list[currentID - 1].completed = false;
+        this.list[id - 1].completed = false;
       }
     });
 
-    inTaskDescription.addEventListener('focus', () => {
-      document.getElementById(currentID).style.backgroundColor = 'rgb(156, 156, 255)';
+    if (task.completed) {
+      checkBok.click();
+    }
 
-      const iMenu = document.getElementById(`icon-menu-${currentID}`);
-      const iDelete = document.getElementById(`icon-remove-${currentID}`);
+    inTaskDescription.addEventListener('focus', (event) => {
+      const { id } = event.currentTarget.parentElement.parentElement;
+      document.getElementById(id).style.backgroundColor = 'rgb(156, 156, 255)';
+      const iDelete = event.currentTarget.parentElement.nextSibling;
+      const iMenu = event.currentTarget.parentElement.nextSibling.nextSibling;
       iDelete.classList.remove('hidden');
       iMenu.classList.add('hidden');
     });
 
     /* Update value when stop focus */
     inTaskDescription.addEventListener('focusout', (event) => {
-      const litask = document.getElementById(currentID);
+      const { id } = event.currentTarget.parentElement.parentElement;
+      const litask = document.getElementById(id);
       litask.style.backgroundColor = 'white';
-      this.list[currentID - 1].description = event.currentTarget.value;
-      const iMenu = document.getElementById(`icon-menu-${currentID}`);
-      const iDelete = document.getElementById(`icon-remove-${currentID}`);
+
+      this.list[id - 1].description = event.currentTarget.value;
+      const iDelete = event.currentTarget.parentElement.nextSibling;
+      const iMenu = event.currentTarget.parentElement.nextSibling.nextSibling;
 
       /* Set time out before hide the iDelete:
       to make sure the click event always be tiggered before focusout */
@@ -74,13 +78,12 @@ export default class ListTasks {
 
     const iMenu = document.createElement('i');
     iMenu.classList.add('fa-solid', 'fa-ellipsis-vertical');
-    iMenu.id = `icon-menu-${currentID}`;
 
     const iDelete = document.createElement('i');
     iDelete.classList.add('fa-solid', 'fa-trash', 'hidden');
-    iDelete.id = `icon-remove-${currentID}`;
-    iDelete.addEventListener('click', () => {
-      this.delete(currentID);
+    iDelete.addEventListener('click', (event) => {
+      const { id } = event.currentTarget.parentElement;
+      this.delete(id);
     });
 
     liTask.append(divTaskContent);
@@ -99,9 +102,11 @@ export default class ListTasks {
   updateIndexs = () => {
     let index = 1;
     this.list.forEach((task) => {
+      const liTask = document.getElementById(task.index);
+      liTask.id = index;
+
       task.index = index;
       index += 1;
     });
-    console.log(this.list);
   }
 }
