@@ -14,6 +14,11 @@ form.addEventListener('submit', (event) => {
   }
 });
 
+const btnClearAll = document.getElementById('btn-clear-task');
+btnClearAll.addEventListener('click', () => {
+  listTask.clearAll();
+});
+
 /* Save changes in Local Storage */
 window.addEventListener('beforeunload', () => {
   const savedData = { currentDescription: form.newtask.value, list: listTask.list };
