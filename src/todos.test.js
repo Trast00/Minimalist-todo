@@ -120,3 +120,39 @@ describe('Delete todo task', () => {
     expect(input.value).toEqual(list.list[1].description)
   })
 })
+
+describe('Test updating of the status',  () => {
+  test('Update a status of 1 task', () => {
+    const list = new ListTasks();
+    list.add('lorem ipsum 1')
+    const input = document.getElementById(1).querySelector("[type='checkbox']");
+    input.checked = true
+    list.onCheck(input) //check the checkbox
+    
+    expect(list.list[0].completed).toBe(true)
+  })
+
+  test('Update a status of 1 task in multiple tasks', () => {
+    const list = new ListTasks();
+    list.add('lorem ipsum 1')
+    list.add('lorem ipsum 2')
+    list.add('lorem ipsum 3')
+    const input = document.getElementById(3).querySelector("[type='checkbox']");
+    input.checked = true
+    list.onCheck(input) //check the checkbox
+    
+    expect(list.list[2].completed).toBe(true)
+  })
+
+  test('Update a status of 1 task and check dom', () => {
+    const list = new ListTasks();
+    list.add('lorem ipsum 1')
+    list.add('lorem ipsum 2')
+    list.add('lorem ipsum 3')
+    const input = document.getElementById(3).querySelector("[type='checkbox']");
+    input.checked = true
+    list.onCheck(input) //check the checkbox
+    
+    expect(input.checked).toBe(list.list[2].completed)
+  })
+})

@@ -26,6 +26,17 @@ class ListTasks {
       }, 200);
   }
 
+  onCheck = (input) => {
+    const { id } = input.parentElement.parentElement;
+      if (input.checked) {
+        input.nextSibling.style.textDecoration = 'line-through';
+        this.list[id - 1].completed = true;
+      } else {
+        input.nextSibling.style.textDecoration = 'none';
+        this.list[id - 1].completed = false;
+      }
+  }
+
   /* Generate / Update task dynamicaly */
   display = (task) => {
     const ulListTask = document.getElementById('list-task');
