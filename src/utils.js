@@ -1,12 +1,10 @@
-import Task from './Task.js';
-
 class ListTasks {
   constructor() {
     this.list = [];
   }
 
   add = (description, completed = false, index = this.list.length + 1) => {
-    const task = new Task(description, completed, index);
+    const task = { description, completed, index };
     this.list.push(task);
     this.display(task);
   }
