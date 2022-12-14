@@ -88,3 +88,35 @@ describe('Delete todo task', () => {
     expect(uI).toHaveLength(2);
   });
 });
+
+describe('Delete todo task', () => {
+  test('should edit targeted task', () =>{
+    const list = new ListTasks();
+    list.add('lorem ipsum 1')
+    const input = document.getElementById(1).querySelector('.task-description');
+    input.value = "We have to finished testing"
+    list.onEdit(input)
+    expect(list.list[0].description).toBe('We have to finished testing')
+  })
+
+  test('should edit targeted task test 2', () =>{
+    const list = new ListTasks();
+    list.add('We have to finished testing')
+    list.add('We have to finished testing2')
+    const input = document.getElementById(2).querySelector('.task-description');
+    input.value = "lorem ipsum 1"
+    list.onEdit(input)
+    expect(list.list[1].description).toMatch('lorem ipsum 1')
+  })
+
+  test('should edit targeted task test 2', () =>{
+    const list = new ListTasks();
+    list.add('We have to finished testing')
+    list.add('We have to finished testing2')
+    const input = document.getElementById(2).querySelector('.task-description');
+    input.value = "lorem ipsum 1"
+    list.onEdit(input)
+
+    expect(input.value).toEqual(list.list[1].description)
+  })
+})

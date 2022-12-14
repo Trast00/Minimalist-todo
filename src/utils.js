@@ -9,6 +9,23 @@ class ListTasks {
     this.display(task);
   }
 
+  onEdit = (event) => {
+      const { id } = event.parentElement.parentElement;
+      const litask = document.getElementById(id);
+      litask.style.backgroundColor = 'white';
+
+      this.list[id - 1].description = event.value;
+      const iDelete = event.parentElement.nextSibling;
+      const iMenu = event.parentElement.nextSibling.nextSibling;
+
+      /* Set time out before hide the iDelete:
+      to make sure the click event always be tiggered before focusout */
+      setTimeout(() => {
+        iMenu.classList.remove('hidden');
+        iDelete.classList.add('hidden');
+      }, 200);
+  }
+
   /* Generate / Update task dynamicaly */
   display = (task) => {
     const ulListTask = document.getElementById('list-task');
@@ -54,21 +71,8 @@ class ListTasks {
     });
 
     /* Update value when stop focus */
-    inTaskDescription.addEventListener('focusout', (event) => {
-      const { id } = event.currentTarget.parentElement.parentElement;
-      const litask = document.getElementById(id);
-      litask.style.backgroundColor = 'white';
-
-      this.list[id - 1].description = event.currentTarget.value;
-      const iDelete = event.currentTarget.parentElement.nextSibling;
-      const iMenu = event.currentTarget.parentElement.nextSibling.nextSibling;
-
-      /* Set time out before hide the iDelete:
-      to make sure the click event always be tiggered before focusout */
-      setTimeout(() => {
-        iMenu.classList.remove('hidden');
-        iDelete.classList.add('hidden');
-      }, 200);
+    inTaskDescription.addEventListener('focusout', (e) => {
+      this.onEdit(e)
     });
 
     /* Display element */
