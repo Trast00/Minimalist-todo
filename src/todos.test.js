@@ -28,9 +28,9 @@ document.body.innerHTML = `<!DOCTYPE html>
 </body>
 </html>`;
 
-const list = new ListTasks()
 
 describe('Add Task Test ', () => {
+  const list = new ListTasks()
   test('Add normal task', () => {
     list.add('task 1')
     expect(list.list).toHaveLength(1)
@@ -46,5 +46,47 @@ describe('Add Task Test ', () => {
     const listUl = document.querySelectorAll('.task');
     expect(listUl).toHaveLength(3)
   })
+})
+
+describe('Delete todo task', () => {
+  test('should delete one todo task test1', () => {
+    const list = new ListTasks();
+    list.add('lorem ipsum')
+    list.delete(1)
+    expect(list.list).toHaveLength(0)
+  });
+  
+  test('should delete one todo task test2', () => {
+    const list = new ListTasks();
+    list.add('lorem ipsum1')
+    list.add('lorem ipsum2')
+    list.add('lorem ipsum3')
+    list.delete(2)
+    expect(list.list[list.list.length-1].description).toBe('lorem ipsum3');
+  });
+  
+  test('should delete one todo task test3', () => {
+    const list = new ListTasks();
+    list.add('lorem ipsum1')
+    list.add('lorem ipsum2')
+    list.add('lorem ipsum3')
+    list.delete(3)
+    list.add("lorem ipsum4")
+    expect(list.list[list.list.length-1]).toEqual({description: "lorem ipsum4", completed: false, index: 3});
+  });
+
+  test('should delete one todo task test3', () => {
+    const list = new ListTasks();
+    const uIList = document.querySelector('#list-task');
+    uIList.innerHTML = '';
+    
+    list.add('lorem ipsum1')
+    list.add('lorem ipsum2')
+    list.add('lorem ipsum3')
+    list.delete(3)
+    const uI = uIList.querySelectorAll('.task')
+    expect(uI).toHaveLength(2);
+  });
+
 })
 

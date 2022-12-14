@@ -1,6 +1,6 @@
 import Task from './Task.js';
 
-class ListTasks {
+export default class ListTasks {
   constructor() {
     this.list = [];
   }
@@ -122,5 +122,3 @@ class ListTasks {
     this.updateIndexs();
   }
 }
-
-module.exports = ListTasks;
