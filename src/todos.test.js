@@ -156,3 +156,41 @@ describe('Test updating of the status',  () => {
     expect(input.checked).toBe(list.list[2].completed)
   })
 })
+
+describe('Clear All completed tasks', () => {
+  test('should clear all the task form the list task', () => {
+    const list = new ListTasks();
+    list.add('Task 1')
+    list.add('Task 2')
+    list.add('Task 3')
+    list.list[0].completed = true;
+    list.clearAll();
+    expect(list.list).toHaveLength(2)
+  })
+
+  test('should clear all the task form the list task test 2', () => {
+    const list = new ListTasks();
+    list.add('Task 1')
+    list.add('Task 2')
+    list.add('Task 3')
+    list.list[0].completed = true;
+    list.list[1].completed = true;
+    list.clearAll();
+    expect(list.list[0].completed).toBe(false)
+  })
+
+  test('should clear all the task form the list task test 2', () => {
+    const list = new ListTasks();
+    document.getElementById('list-task').innerHTML = '';
+    list.add('Task 1')
+    list.add('Task 2')
+    list.add('Task 3')
+    list.list[0].completed = true;
+    list.list[1].completed = true;
+    list.clearAll();
+    const domUi = document.querySelectorAll('.task')
+    expect(domUi).toHaveLength(1)
+  })
+
+
+})
