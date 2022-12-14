@@ -10,31 +10,31 @@ class ListTasks {
   }
 
   onEdit = (event) => {
-      const { id } = event.parentElement.parentElement;
-      const litask = document.getElementById(id);
-      litask.style.backgroundColor = 'white';
+    const { id } = event.parentElement.parentElement;
+    const litask = document.getElementById(id);
+    litask.style.backgroundColor = 'white';
 
-      this.list[id - 1].description = event.value;
-      const iDelete = event.parentElement.nextSibling;
-      const iMenu = event.parentElement.nextSibling.nextSibling;
+    this.list[id - 1].description = event.value;
+    const iDelete = event.parentElement.nextSibling;
+    const iMenu = event.parentElement.nextSibling.nextSibling;
 
-      /* Set time out before hide the iDelete:
+    /* Set time out before hide the iDelete:
       to make sure the click event always be tiggered before focusout */
-      setTimeout(() => {
-        iMenu.classList.remove('hidden');
-        iDelete.classList.add('hidden');
-      }, 200);
+    setTimeout(() => {
+      iMenu.classList.remove('hidden');
+      iDelete.classList.add('hidden');
+    }, 200);
   }
 
   onCheck = (input) => {
     const { id } = input.parentElement.parentElement;
-      if (input.checked) {
-        input.nextSibling.style.textDecoration = 'line-through';
-        this.list[id - 1].completed = true;
-      } else {
-        input.nextSibling.style.textDecoration = 'none';
-        this.list[id - 1].completed = false;
-      }
+    if (input.checked) {
+      input.nextSibling.style.textDecoration = 'line-through';
+      this.list[id - 1].completed = true;
+    } else {
+      input.nextSibling.style.textDecoration = 'none';
+      this.list[id - 1].completed = false;
+    }
   }
 
   /* Generate / Update task dynamicaly */
@@ -83,7 +83,7 @@ class ListTasks {
 
     /* Update value when stop focus */
     inTaskDescription.addEventListener('focusout', (e) => {
-      this.onEdit(e)
+      this.onEdit(e);
     });
 
     /* Display element */

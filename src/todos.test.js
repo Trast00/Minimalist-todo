@@ -90,107 +90,105 @@ describe('Delete todo task', () => {
 });
 
 describe('Delete todo task', () => {
-  test('should edit targeted task', () =>{
+  test('should edit targeted task', () => {
     const list = new ListTasks();
-    list.add('lorem ipsum 1')
+    list.add('lorem ipsum 1');
     const input = document.getElementById(1).querySelector('.task-description');
-    input.value = "We have to finished testing"
-    list.onEdit(input)
-    expect(list.list[0].description).toBe('We have to finished testing')
-  })
+    input.value = 'We have to finished testing';
+    list.onEdit(input);
+    expect(list.list[0].description).toBe('We have to finished testing');
+  });
 
-  test('should edit targeted task test 2', () =>{
+  test('should edit targeted task test 2', () => {
     const list = new ListTasks();
-    list.add('We have to finished testing')
-    list.add('We have to finished testing2')
+    list.add('We have to finished testing');
+    list.add('We have to finished testing2');
     const input = document.getElementById(2).querySelector('.task-description');
-    input.value = "lorem ipsum 1"
-    list.onEdit(input)
-    expect(list.list[1].description).toMatch('lorem ipsum 1')
-  })
+    input.value = 'lorem ipsum 1';
+    list.onEdit(input);
+    expect(list.list[1].description).toMatch('lorem ipsum 1');
+  });
 
-  test('should edit targeted task test 2', () =>{
+  test('should edit targeted task test 2', () => {
     const list = new ListTasks();
-    list.add('We have to finished testing')
-    list.add('We have to finished testing2')
+    list.add('We have to finished testing');
+    list.add('We have to finished testing2');
     const input = document.getElementById(2).querySelector('.task-description');
-    input.value = "lorem ipsum 1"
-    list.onEdit(input)
+    input.value = 'lorem ipsum 1';
+    list.onEdit(input);
 
-    expect(input.value).toEqual(list.list[1].description)
-  })
-})
+    expect(input.value).toEqual(list.list[1].description);
+  });
+});
 
-describe('Test updating of the status',  () => {
+describe('Test updating of the status', () => {
   test('Update a status of 1 task', () => {
     const list = new ListTasks();
-    list.add('lorem ipsum 1')
+    list.add('lorem ipsum 1');
     const input = document.getElementById(1).querySelector("[type='checkbox']");
-    input.checked = true
-    list.onCheck(input) //check the checkbox
-    
-    expect(list.list[0].completed).toBe(true)
-  })
+    input.checked = true;
+    list.onCheck(input); // check the checkbox
+
+    expect(list.list[0].completed).toBe(true);
+  });
 
   test('Update a status of 1 task in multiple tasks', () => {
     const list = new ListTasks();
-    list.add('lorem ipsum 1')
-    list.add('lorem ipsum 2')
-    list.add('lorem ipsum 3')
+    list.add('lorem ipsum 1');
+    list.add('lorem ipsum 2');
+    list.add('lorem ipsum 3');
     const input = document.getElementById(3).querySelector("[type='checkbox']");
-    input.checked = true
-    list.onCheck(input) //check the checkbox
-    
-    expect(list.list[2].completed).toBe(true)
-  })
+    input.checked = true;
+    list.onCheck(input); // check the checkbox
+
+    expect(list.list[2].completed).toBe(true);
+  });
 
   test('Update a status of 1 task and check dom', () => {
     const list = new ListTasks();
-    list.add('lorem ipsum 1')
-    list.add('lorem ipsum 2')
-    list.add('lorem ipsum 3')
+    list.add('lorem ipsum 1');
+    list.add('lorem ipsum 2');
+    list.add('lorem ipsum 3');
     const input = document.getElementById(3).querySelector("[type='checkbox']");
-    input.checked = true
-    list.onCheck(input) //check the checkbox
-    
-    expect(input.checked).toBe(list.list[2].completed)
-  })
-})
+    input.checked = true;
+    list.onCheck(input); // check the checkbox
+
+    expect(input.checked).toBe(list.list[2].completed);
+  });
+});
 
 describe('Clear All completed tasks', () => {
   test('should clear all the task form the list task', () => {
     const list = new ListTasks();
-    list.add('Task 1')
-    list.add('Task 2')
-    list.add('Task 3')
+    list.add('Task 1');
+    list.add('Task 2');
+    list.add('Task 3');
     list.list[0].completed = true;
     list.clearAll();
-    expect(list.list).toHaveLength(2)
-  })
+    expect(list.list).toHaveLength(2);
+  });
 
   test('should clear all the task form the list task test 2', () => {
     const list = new ListTasks();
-    list.add('Task 1')
-    list.add('Task 2')
-    list.add('Task 3')
+    list.add('Task 1');
+    list.add('Task 2');
+    list.add('Task 3');
     list.list[0].completed = true;
     list.list[1].completed = true;
     list.clearAll();
-    expect(list.list[0].completed).toBe(false)
-  })
+    expect(list.list[0].completed).toBe(false);
+  });
 
   test('should clear all the task form the list task test 2', () => {
     const list = new ListTasks();
     document.getElementById('list-task').innerHTML = '';
-    list.add('Task 1')
-    list.add('Task 2')
-    list.add('Task 3')
+    list.add('Task 1');
+    list.add('Task 2');
+    list.add('Task 3');
     list.list[0].completed = true;
     list.list[1].completed = true;
     list.clearAll();
-    const domUi = document.querySelectorAll('.task')
-    expect(domUi).toHaveLength(1)
-  })
-
-
-})
+    const domUi = document.querySelectorAll('.task');
+    expect(domUi).toHaveLength(1);
+  });
+});
