@@ -91,6 +91,8 @@ export default class ListTasks {
     liTask.append(iDelete);
     liTask.append(iMenu);
 
+    this.addEventsDragAndDrop(liTask)
+
     ulListTask.append(liTask);
   }
 
@@ -120,5 +122,22 @@ export default class ListTasks {
 
     this.list = this.list.filter((task) => !task.completed);
     this.updateIndexs();
+  }
+
+  addEventsDragAndDrop = (element) => {
+    element.draggable = "true"
+    element.addEventListener('dragstart', (event) => {
+      event.currentTarget.style.backgroundColor = "green"
+    })
+    element.addEventListener('dragend', (event) => {
+      event.currentTarget.style.backgroundColor = "yellow"
+    })
+    element.addEventListener('dragenter', (event) => {
+      event.currentTarget.style.backgroundColor = "blue"
+    })
+    element.addEventListener('dragleave', (event) => {
+      event.currentTarget.style.backgroundColor = "red"
+      event.preventDefault()
+    })
   }
 }
