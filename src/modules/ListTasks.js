@@ -3,6 +3,9 @@ import Task from './Task.js';
 export default class ListTasks {
   constructor() {
     this.list = [];
+
+    this.dragStartID = -1
+    this.dragEndID = -1
   }
 
   add = (description, completed = false, index = this.list.length + 1) => {
@@ -128,16 +131,29 @@ export default class ListTasks {
   addEventsDragAndDrop = (element) => {
     element.draggable = "true"
     element.addEventListener('dragstart', (event) => {
-      event.currentTarget.style.backgroundColor = "green"
-    })
+      this.dragStartID = event.currentTarget.id
+      event.currentTarget.style.backgroundColor = "rgb(156, 156, 255)"
+    }, false)
     element.addEventListener('dragend', (event) => {
-      event.currentTarget.style.backgroundColor = "yellow"
-    })
+      [this.list[parseInt(this.dragStartID)-1],this.list[parseInt(this.dragEndID)-1]] = [this.list[parseInt(this.dragEndID)-1],this.list[parseInt(this.dragStartID)-1]]
+      this.updateIndexs()
+      const list = document.getElementById('list-task')
+      list.innerHTML = ''
+      this.list.forEach(task => {
+        this.display(task)
+      })
+    }, false)
     element.addEventListener('dragenter', (event) => {
-      event.currentTarget.style.backgroundColor = "blue"
-    })
+      
+    }, false)
     element.addEventListener('dragleave', (event) => {
-      event.currentTarget.style.backgroundColor = "red"
+      event.currentTarget.style.backgroundColor = "#fff"
+      event.preventDefault()
+    }, false)
+
+    element.addEventListener('dragover', (event) => {
+      event.currentTarget.style.backgroundColor = "#ebebeb"
+      this.dragEndID = event.currentTarget.id
       event.preventDefault()
     })
   }

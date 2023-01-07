@@ -80,22 +80,20 @@ i {
 
 .task .task-content {
   width: 90%;
-  pointer-events: none;
 }
 
 .task .task-content input[type="checkbox"] {
   width: 15px;
   height: 15px;
   margin-right: 12px;
-  pointer-events: none;
 }
 
 .task .task-content .task-description {
   width: 100%;
   border: none;
   font-size: 1.125rem;
+  background: white;
   background: none;
-  pointer-events: none;
 }
 
 .task .task-content .task-description:focus {
