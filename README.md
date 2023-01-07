@@ -1,16 +1,22 @@
 <a name="readme-top"></a>
 
 # 📗 Table of Contents
-- [📖 About the Project](#about-project)
-  - [🛠 Built With](#built-with)
-    - [Tech Stack](#tech-stack)
-    - [Key Features](#key-features)
-  - [🚀 Live Demo](#live-demo)
-  - [👥 Authors](#authors)
-- [🔭 Future Features](#future-features)
-- [⭐️ Show your support](#support)
-- [🙏 Acknowledgements](#acknowledgements)
-- [📝 License](#license)
+- [📗 Table of Contents](#-table-of-contents)
+- [📖 \[Minimalist-todo\] ](#-minimalist-todo-)
+  - [🛠 Built With ](#-built-with-)
+    - [Tech Stack ](#tech-stack-)
+    - [Key Features ](#key-features-)
+  - [🚀 Live Demo ](#-live-demo-)
+  - [💻 Getting Started ](#-getting-started-)
+    - [Setup](#setup)
+    - [Install](#install)
+    - [Usage](#usage)
+  - [👥 Authors ](#-authors-)
+  - [🔭 Future Features ](#-future-features-)
+  - [🤝 Contributing ](#-contributing-)
+  - [⭐️ Show your support ](#️-show-your-support-)
+  - [🙏 Acknowledgments ](#-acknowledgments-)
+  - [📝 License ](#-license-)
 
 # 📖 [Minimalist-todo] <a name="about-project"></a>
 **Minimalist-todo** is a project done This is for the activity "To Do list: list structure" of the Microverse Program. The goal is to to use webpack and ES6.
@@ -41,21 +47,22 @@
 To get a local copy up and running, follow these steps.
 
 
- ### Setup
+### Setup
 
 Clone this repository to your desired folder and install required dependencies:
 
 ```sh
   cd my-folder
   git clone git@github.com:myaccount/my-project.git
+```
 
-  npm init -y
-  npm install webpack webpack-cli --save-dev
-  npm install --save-dev html-webpack-plugin
-  npm install --save-dev html-loader 
+### Install
 
-  npm install --save-dev style-loader css-loader
-  npm install --save-dev webpack-dev-server
+Install this project with:
+
+```sh
+  cd my-project
+  npm install
 ```
 
 ### Usage
@@ -80,6 +87,16 @@ To run the project, execute the following command:
 
 - [ ] **[Drag and Drop task]**
 - [ ] **[Personnalize the style]**
+
+
+## 🤝 Contributing <a name="contributing"></a>
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/Trast00/Minimalist-todo/issues).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 ## ⭐️ Show your support <a name="support"></a>
 

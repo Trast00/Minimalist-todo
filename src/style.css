@@ -8,7 +8,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   background-color: #f6f6f6;
   font-family: "Inter var", sans-serif;
 }
@@ -22,7 +21,7 @@ main {
   width: 100%;
   max-width: 500px;
   min-height: 220px;
-  margin: 8px;
+  margin: 40px 8px 40px 8px;
   border-radius: 4px;
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
   background-color: white;

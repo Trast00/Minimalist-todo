@@ -19,7 +19,7 @@ export default class ListTasks {
     liTask.id = task.index;
 
     const divTaskContent = document.createElement('div');
-    divTaskContent.classList.add('task-content');
+    divTaskContent.classList.add('align-center', 'task-content');
     const checkBok = document.createElement('input');
     checkBok.type = 'checkbox';
     checkBok.name = task.index;
@@ -67,6 +67,7 @@ export default class ListTasks {
 
       /* Set time out before hide the iDelete:
       to make sure the click event always be tiggered before focusout */
+      document.querySelectorAll('.movie').length
       setTimeout(() => {
         iMenu.classList.remove('hidden');
         iDelete.classList.add('hidden');
