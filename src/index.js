@@ -8,10 +8,10 @@ const listTask = new ListTasks();
 const form = document.forms[0];
 form.addEventListener('submit', (event) => {
   event.preventDefault();
-  if (form.newtask.value.length !== 0) {
+  if (form.newtask.value.trim().length !== 0) {
     listTask.add(form.newtask.value);
-    form.newtask.value = '';
   }
+  form.newtask.value = '';
 });
 
 const btnClearAll = document.getElementById('btn-clear-task');
