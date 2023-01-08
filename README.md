@@ -2,7 +2,7 @@
 
 # 📗 Table of Contents
 - [📗 Table of Contents](#-table-of-contents)
-- [📖 \[Minimalist-todo\] ](#-minimalist-todo-)
+- [📖 Minimalist-todo ](#-minimalist-todo-)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
@@ -18,7 +18,7 @@
   - [🙏 Acknowledgments ](#-acknowledgments-)
   - [📝 License ](#-license-)
 
-# 📖 [Minimalist-todo] <a name="about-project"></a>
+# 📖 Minimalist-todo <a name="about-project"></a>
 **Minimalist-todo** is a project done This is for the activity "To Do list: list structure" of the Microverse Program. The goal is to to use webpack and ES6.
 
 ## 🛠 Built With <a name="built-with"></a>
@@ -85,8 +85,8 @@ To run the project, execute the following command:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[Drag and Drop task]**
-- [ ] **[Personnalize the style]**
+- [ ] **Drag and Drop task**
+- [ ] **Personnalize the style**
 
 
 ## 🤝 Contributing <a name="contributing"></a>
