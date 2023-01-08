@@ -134,8 +134,19 @@ export default class ListTasks {
       this.dragStartID = event.currentTarget.id
       event.currentTarget.style.backgroundColor = "rgb(156, 156, 255)"
     }, false)
-    element.addEventListener('dragend', (event) => {
-      [this.list[parseInt(this.dragStartID)-1],this.list[parseInt(this.dragEndID)-1]] = [this.list[parseInt(this.dragEndID)-1],this.list[parseInt(this.dragStartID)-1]]
+    element.addEventListener('dragend', () => {
+      /* Supprimer element draged task */
+      const dragedTask = this.list[parseInt(this.dragStartID)-1]
+      this.list = this.list.filter(task => {
+        if(task.index===dragedTask.index){
+          return
+        }
+        return task
+      })
+      console.log(this.list)
+      /* Add draged task to his new position */
+      this.list.splice(parseInt(this.dragEndID)-1, 0, dragedTask)
+      
       this.updateIndexs()
       const list = document.getElementById('list-task')
       list.innerHTML = ''
@@ -143,9 +154,7 @@ export default class ListTasks {
         this.display(task)
       })
     }, false)
-    element.addEventListener('dragenter', (event) => {
-      
-    }, false)
+    //element.addEventListener('dragenter', () => {}, false)
     element.addEventListener('dragleave', (event) => {
       event.currentTarget.style.backgroundColor = "#fff"
       event.preventDefault()
