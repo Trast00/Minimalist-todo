@@ -5,10 +5,7 @@
 }
 
 body {
-  display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
   background-color: #f6f6f6;
   font-family: "Inter var", sans-serif;
 }
@@ -17,12 +14,17 @@ body {
   display: none;
 }
 
+.align-center {
+  display: flex;
+  align-items: center;
+}
+
 main {
   box-sizing: border-box;
   width: 100%;
   max-width: 500px;
   min-height: 220px;
-  margin: 8px;
+  margin: 40px 8px 40px 8px;
   border-radius: 4px;
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
   background-color: white;
@@ -34,8 +36,6 @@ main {
 /* Title */
 
 .title {
-  display: flex;
-  align-items: center;
   justify-content: space-between;
   padding: 16px;
 }
@@ -80,8 +80,6 @@ i {
 
 .task .task-content {
   width: 90%;
-  display: flex;
-  align-items: center;
 }
 
 .task .task-content input[type="checkbox"] {
@@ -90,10 +88,15 @@ i {
   margin-right: 12px;
 }
 
+.task .task-content .fa-trash {
+  color: white;
+}
+
 .task .task-content .task-description {
   width: 100%;
   border: none;
   font-size: 1.125rem;
+  background: white;
   background: none;
 }
 

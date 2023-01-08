@@ -3,6 +3,9 @@ import Task from './Task.js';
 export default class ListTasks {
   constructor() {
     this.list = [];
+
+    this.dragStartID = -1;
+    this.dragEndID = -1;
   }
 
   add = (description, completed = false, index = this.list.length + 1) => {
@@ -19,7 +22,7 @@ export default class ListTasks {
     liTask.id = task.index;
 
     const divTaskContent = document.createElement('div');
-    divTaskContent.classList.add('task-content');
+    divTaskContent.classList.add('align-center', 'task-content');
     const checkBok = document.createElement('input');
     checkBok.type = 'checkbox';
     checkBok.name = task.index;
@@ -82,14 +85,17 @@ export default class ListTasks {
 
     const iDelete = document.createElement('i');
     iDelete.classList.add('fa-solid', 'fa-trash', 'hidden');
+    iDelete.style.color = '#fff';
     iDelete.addEventListener('click', (event) => {
       const { id } = event.currentTarget.parentElement;
-      this.delete(id); // id = index + 1
+      this.delete(id); // Note: is id = index + 1
     });
 
     liTask.append(divTaskContent);
     liTask.append(iDelete);
     liTask.append(iMenu);
+
+    this.addEventsDragAndDrop(liTask);
 
     ulListTask.append(liTask);
   }
@@ -120,5 +126,39 @@ export default class ListTasks {
 
     this.list = this.list.filter((task) => !task.completed);
     this.updateIndexs();
+  }
+
+  addEventsDragAndDrop = (element) => {
+    element.draggable = 'true';
+    element.addEventListener('dragstart', (event) => {
+      this.dragStartID = event.currentTarget.id;
+      event.currentTarget.style.backgroundColor = 'rgb(156, 156, 255)';
+    }, false);
+    element.addEventListener('dragend', () => {
+      /* Supprimer element draged task */
+      const dragedTask = this.list[Number(this.dragStartID) - 1];
+      this.list = this.list.filter((task) => task.index !== dragedTask.index);
+
+      /* Add draged task to his new position */
+      this.list.splice(Number(this.dragEndID) - 1, 0, dragedTask);
+
+      this.updateIndexs();
+      const list = document.getElementById('list-task');
+      list.innerHTML = '';
+      this.list.forEach((task) => {
+        this.display(task);
+      });
+    }, false);
+
+    element.addEventListener('dragleave', (event) => {
+      event.currentTarget.style.backgroundColor = '#fff';
+      event.preventDefault();
+    }, false);
+
+    element.addEventListener('dragover', (event) => {
+      event.currentTarget.style.backgroundColor = '#ebebeb';
+      this.dragEndID = event.currentTarget.id;
+      event.preventDefault();
+    });
   }
 }
