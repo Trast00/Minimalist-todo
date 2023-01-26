@@ -19,7 +19,12 @@
   - [📝 License ](#-license-)
 
 # 📖 Minimalist-todo <a name="about-project"></a>
-**Minimalist-todo** is a project done This is for the activity "To Do list: list structure" of the Microverse Program. The goal is to to use webpack and ES6.
+**Minimalist-todo** is a project done This is for the activity "To Do list: list structure" of the Microverse Program. The goal is to to learn use webpack and javascript ES6.
+
+
+
+# Preview
+<img src="https://user-images.githubusercontent.com/74411135/214894582-6be3ff0e-cae2-4704-8c3b-bcdcde7a765d.png" alt="Image of a todo list project" />
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -33,6 +38,7 @@
 - **Use Webpack**
 - **Use ES6**
 - **Use Add/Update/Remove Tasks**
+- **Drag and Drop task feature**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -78,14 +84,14 @@ To run the project, execute the following command:
 
 👤 **Dicko Allasane**
 
-- GitHub: [@githubhandle](https://github.com/Trast00)
-- Twitter: [@twitterhandle](https://twitter.com/AllassaneDicko0/)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/allassane-dicko-744aaa224)
+- GitHub: [@Trast00](https://github.com/Trast00)
+- Twitter: [@dickoallassane](https://twitter.com/AllassaneDicko0/)
+- LinkedIn: [dickoallassane](https://www.linkedin.com/in/allassane-dicko-744aaa224)
 
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **Drag and Drop task**
+- [x] **Drag and Drop task**
 - [ ] **Personnalize the style**
 
 
